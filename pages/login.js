@@ -37,7 +37,7 @@ export default function LoginScreen() {
                 headers: {
                   'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({githubUser: githubUser})
+                body: JSON.stringify({ githubUser: githubUser })
               }).then(async (res) => {
                 const data = await res.json()
                 const token = data.token;
@@ -54,8 +54,8 @@ export default function LoginScreen() {
               Acesse agora mesmo com seu usuário do <strong>GitHub</strong>!
             </p>
             <input placeholder="Usuário" value={githubUser} onChange={(e) => setGithubUser(e.target.value)}
-               />
-          {/* onBlur={validando} */}
+            />
+            {/* onBlur={validando} */}
             {valida ? 'Usuário não encontrado' : ''}
             <button>
               Login
@@ -72,6 +72,28 @@ export default function LoginScreen() {
               </a>
             </p>
           </footer>
+
+          <button style={{ width: '200px' }} onClick={() => {
+            fetch('http://localhost:8080/api/v1/front-sdk/auth', {
+              method: 'POST',
+              credentials: "include",
+              headers: {
+                'x-client-id': '7bec074e-d912-4844-9ad3-3613d57a5f9d'
+              },
+              credentials: 'include'
+            })
+              .then(response => {
+                console.log("response", response)
+                // Processar a resposta aqui
+              })
+              .catch(error => {
+                console.log("error", error)
+                // Lidar com erros aqui
+              });
+          }}>
+            TESTAR A BAGAÇA
+          </button>
+
         </section>
 
         <footer className="footerArea">
