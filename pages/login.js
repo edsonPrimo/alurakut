@@ -74,7 +74,7 @@ export default function LoginScreen() {
           </footer>
 
           <button style={{ width: '200px' }} onClick={() => {
-            fetch('http://localhost:8080/api/v1/front-sdk/auth', {
+            fetch('https://api-dev.cryptum.io/front-sdk/auth', {
               method: 'POST',
               credentials: "include",
               headers: {
